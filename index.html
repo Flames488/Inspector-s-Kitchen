@@ -1,0 +1,1964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inspector's Kitchen | Authentic African Food — Istanbul, Turkey</title>
+<meta name="description" content="Authentic West African home cooking in Istanbul. Jollof Rice, Egusi Soup, Pepper Soup & more. Order on WhatsApp for fresh daily delivery.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  /* ── VARIABLES ── */
+  :root {
+    --black: #0a0a0a;
+    --deep: #111111;
+    --card: #181818;
+    --card2: #1e1e1e;
+    --orange: #e8650a;
+    --orange-light: #ff8c2a;
+    --gold: #c9922a;
+    --gold-light: #f0b94a;
+    --cream: #f5e9d0;
+    --cream-muted: #c8b898;
+    --white: #ffffff;
+    --text-muted: #888880;
+    --border: rgba(200,160,80,0.18);
+    --border-hover: rgba(232,101,10,0.6);
+    --green-wa: #25D366;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--black); }
+  ::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 2px; }
+
+  /* ── SELECTION ── */
+  ::selection { background: var(--orange); color: var(--white); }
+
+  /* ══════════════════════════════
+     NAV
+  ══════════════════════════════ */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 4vw;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: padding 0.3s ease, background 0.3s ease;
+  }
+  nav.scrolled {
+    padding: 0.6rem 4vw;
+    background: rgba(10,10,10,0.98);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none; flex-shrink: 0;
+  }
+  .nav-logo-img {
+    width: 48px; height: 48px; border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--orange);
+    box-shadow: 0 0 16px rgba(232,101,10,0.35);
+    transition: box-shadow 0.3s;
+  }
+  .nav-logo:hover .nav-logo-img { box-shadow: 0 0 25px rgba(232,101,10,0.6); }
+  .nav-logo-text { display: flex; flex-direction: column; line-height: 1.15; }
+  .nav-logo-text .brand { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--white); font-style: italic; }
+  .nav-logo-text .sub { font-size: 0.58rem; letter-spacing: 0.25em; color: var(--orange); text-transform: uppercase; }
+
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .nav-links a {
+    color: var(--cream-muted); text-decoration: none;
+    font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+    transition: color 0.25s;
+    position: relative; padding-bottom: 2px;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
+    height: 1px; background: var(--orange); transform: scaleX(0);
+    transition: transform 0.25s ease;
+    transform-origin: left;
+  }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  .nav-cta {
+    background: var(--orange);
+    color: var(--white); text-decoration: none;
+    padding: 0.55rem 1.3rem;
+    border-radius: 2px;
+    font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+    transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+    font-weight: 500; flex-shrink: 0;
+  }
+  .nav-cta:hover {
+    background: var(--orange-light);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(232,101,10,0.4);
+  }
+
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column; justify-content: center;
+    gap: 5px; cursor: pointer; padding: 6px;
+    background: none; border: none;
+    width: 40px; height: 40px;
+    position: relative; z-index: 1100;
+  }
+  .hamburger span {
+    width: 24px; height: 2px; background: var(--cream);
+    display: block; transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-origin: center;
+    border-radius: 2px;
+  }
+  .hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ══════════════════════════════
+     MOBILE NAV OVERLAY
+  ══════════════════════════════ */
+  .mobile-nav {
+    position: fixed; inset: 0; z-index: 999;
+    background: rgba(8,8,8,0.98);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+  .mobile-nav.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .mobile-nav a {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 8vw, 2.4rem);
+    color: var(--cream); text-decoration: none;
+    font-style: italic;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .mobile-nav a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+    height: 1px; background: var(--orange); transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  .mobile-nav a:hover { color: var(--orange); }
+  .mobile-nav a:hover::after { transform: scaleX(1); }
+  .mobile-nav .mobile-wa {
+    margin-top: 0.5rem;
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--green-wa);
+    color: var(--white); text-decoration: none;
+    padding: 0.85rem 2.2rem; border-radius: 3px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem; font-weight: 500;
+    font-style: normal;
+  }
+  .mobile-nav .mobile-wa::after { display: none; }
+
+  /* ══════════════════════════════
+     HERO
+  ══════════════════════════════ */
+  #hero {
+    min-height: 100vh;
+    min-height: 100dvh;
+    position: relative;
+    display: flex; align-items: center;
+    overflow: hidden;
+    padding-top: 80px;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 65% 50%, rgba(232,101,10,0.1) 0%, transparent 55%),
+      radial-gradient(ellipse at 10% 80%, rgba(201,146,42,0.07) 0%, transparent 50%),
+      linear-gradient(135deg, #0a0a0a 0%, #141008 50%, #0f0a05 100%);
+  }
+  .hero-bg::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 2px 2px, rgba(232,101,10,0.05) 1px, transparent 0);
+    background-size: 40px 40px;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 3rem 4vw 3rem;
+    max-width: 620px;
+    animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) forwards;
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(232,101,10,0.12);
+    border: 1px solid rgba(232,101,10,0.3);
+    padding: 0.4rem 1.1rem; border-radius: 50px;
+    margin-bottom: 2rem;
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--orange-light);
+  }
+
+  .hero-badge-icon {
+    width: 18px; height: 18px;
+    background: url('img/logo.png') center/cover no-repeat;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.6rem, 6.5vw, 5.5rem);
+    line-height: 1.05;
+    font-weight: 900;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+  .hero-title em { font-style: italic; color: var(--orange); }
+  .hero-title .outline {
+    -webkit-text-stroke: 1px rgba(255,255,255,0.28);
+    color: transparent;
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 2.2vw, 1.35rem);
+    color: var(--cream-muted);
+    font-weight: 300;
+    margin: 1.2rem 0 2.2rem;
+    letter-spacing: 0.03em;
+    line-height: 1.65;
+  }
+
+  .hero-actions {
+    display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--orange);
+    color: var(--white);
+    padding: 0.9rem 2rem;
+    border-radius: 2px;
+    text-decoration: none;
+    font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500;
+    transition: all 0.25s;
+    border: none; cursor: pointer;
+    white-space: nowrap;
+  }
+  .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(232,101,10,0.4); }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent;
+    color: var(--cream);
+    padding: 0.9rem 2rem;
+    border-radius: 2px;
+    text-decoration: none;
+    font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500;
+    border: 1px solid var(--border);
+    transition: all 0.25s;
+    white-space: nowrap;
+  }
+  .btn-secondary:hover { border-color: var(--green-wa); color: var(--green-wa); }
+  .btn-secondary svg { transition: transform 0.2s; }
+  .btn-secondary:hover svg { transform: scale(1.1); }
+
+  .hero-right {
+    position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+    width: 45vw; max-width: 620px;
+    animation: fadeIn 1.2s ease 0.3s forwards;
+    opacity: 0;
+    pointer-events: none;
+  }
+  @keyframes fadeIn { to { opacity: 1; } }
+
+  .hero-img-frame {
+    position: relative; padding: 2rem 2rem 2rem 1rem;
+  }
+  .hero-img-frame::before {
+    content: '';
+    position: absolute; top: 0; right: 1.5rem;
+    width: 68%; height: 68%;
+    border-top: 1px solid var(--gold);
+    border-right: 1px solid var(--gold);
+    border-radius: 0 4px 0 0;
+    pointer-events: none;
+  }
+  .hero-img-frame::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0.5rem;
+    width: 68%; height: 68%;
+    border-bottom: 1px solid var(--orange);
+    border-left: 1px solid var(--orange);
+    border-radius: 0 0 0 4px;
+    pointer-events: none;
+  }
+
+  .hero-img-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 240px 180px;
+    gap: 8px;
+  }
+  .hero-img-grid img {
+    width: 100%; height: 100%; object-fit: cover;
+    border-radius: 3px; display: block;
+  }
+  .hero-img-grid img:first-child { grid-row: span 2; }
+
+  .logo-overlay {
+    position: absolute; bottom: 2rem; right: 2.5rem;
+    z-index: 10;
+  }
+  .logo-circle {
+    width: 100px; height: 100px; border-radius: 50%;
+    background: var(--black);
+    border: 3px solid var(--orange);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 28px rgba(232,101,10,0.5), 0 0 60px rgba(232,101,10,0.2);
+    overflow: hidden; padding: 4px;
+  }
+  .logo-circle img {
+    width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
+  }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem; flex-wrap: wrap;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    animation: fadeUp 1s ease 0.5s forwards;
+    opacity: 0; transform: translateY(20px);
+  }
+  .stat-item {}
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9rem; color: var(--orange); font-weight: 700;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--text-muted); margin-top: 0.3rem;
+  }
+
+  /* ══════════════════════════════
+     MARQUEE
+  ══════════════════════════════ */
+  .marquee-bar {
+    background: var(--orange);
+    padding: 0.75rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .marquee-inner {
+    display: inline-flex;
+    animation: marquee 30s linear infinite;
+  }
+  .marquee-inner:hover { animation-play-state: paused; }
+  .marquee-item {
+    font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--white); font-weight: 500;
+    padding: 0 1.5rem;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .marquee-item img {
+    width: 22px; height: 22px; border-radius: 50%;
+    object-fit: cover; flex-shrink: 0;
+    opacity: 0.9;
+  }
+  .marquee-dot { color: rgba(255,255,255,0.4); padding: 0 0.3rem; }
+  @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+  /* ══════════════════════════════
+     SECTION BASE
+  ══════════════════════════════ */
+  section { padding: 6rem 4vw; }
+  .section-label {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 1rem;
+  }
+  .section-label::before, .section-label::after {
+    content: ''; display: block; width: 28px; height: 1px; background: var(--orange);
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    color: var(--white); font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1.2rem;
+  }
+  .section-title em { font-style: italic; color: var(--orange); }
+  .section-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.12rem; line-height: 1.75;
+    color: var(--cream-muted);
+    max-width: 560px;
+  }
+
+  /* ══════════════════════════════
+     ABOUT
+  ══════════════════════════════ */
+  #about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .about-images { position: relative; }
+  .about-img-main {
+    width: 100%; aspect-ratio: 4/5; object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 20px 20px 0 rgba(232,101,10,0.18);
+    display: block;
+  }
+  .about-img-accent {
+    position: absolute;
+    width: 52%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 4px;
+    bottom: -2.5rem; right: -2rem;
+    border: 4px solid var(--black);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.7);
+  }
+  .about-badge-float {
+    position: absolute;
+    top: -1.2rem; left: -1.2rem;
+    background: var(--orange);
+    color: var(--white);
+    width: 96px; height: 96px;
+    border-radius: 50%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    text-align: center; line-height: 1.25;
+    font-size: 0.65rem;
+    padding: 10px;
+    box-shadow: 0 0 22px rgba(232,101,10,0.5);
+    animation: spin-slow 14s linear infinite;
+    user-select: none;
+  }
+  .about-badge-float img {
+    width: 28px; height: 28px; border-radius: 50%;
+    object-fit: cover; margin-bottom: 4px;
+  }
+  .about-badge-float .big { font-size: 1.2rem; font-weight: 700; }
+  @keyframes spin-slow { to { transform: rotate(360deg); } }
+
+  .about-features {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    margin-top: 2.5rem;
+  }
+  .about-feature {
+    padding: 1.2rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--card);
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  }
+  .about-feature:hover {
+    border-color: var(--orange);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  }
+  .feat-icon { margin-bottom: 0.6rem; }
+  .feat-icon img {
+    width: 28px; height: 28px; object-fit: cover;
+    border-radius: 50%;
+  }
+  .feat-title { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); font-weight: 500; margin-bottom: 0.3rem; }
+  .feat-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.55; }
+
+  /* ══════════════════════════════
+     MENU
+  ══════════════════════════════ */
+  #menu { background: var(--deep); }
+  .menu-header { text-align: center; margin-bottom: 3rem; }
+  .menu-header .section-label { justify-content: center; }
+
+  .menu-tabs {
+    display: flex; justify-content: center; gap: 0.5rem;
+    flex-wrap: wrap; margin-bottom: 3rem;
+  }
+  .tab-btn {
+    padding: 0.55rem 1.2rem;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--cream-muted);
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+    transition: all 0.22s;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .tab-btn img {
+    width: 18px; height: 18px; border-radius: 50%; object-fit: cover;
+    opacity: 0.8; transition: opacity 0.2s;
+  }
+  .tab-btn.active, .tab-btn:hover {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: var(--white);
+  }
+  .tab-btn.active img, .tab-btn:hover img { opacity: 1; }
+
+  .menu-panel { display: none; }
+  .menu-panel.active { display: block; }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .menu-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+  }
+  .menu-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--orange);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.55);
+  }
+
+  .menu-card-img-wrap {
+    width: 100%; height: 200px;
+    overflow: hidden; position: relative;
+    background: linear-gradient(135deg, #1a1208 0%, #251a08 100%);
+  }
+  .menu-card-img-wrap img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+  }
+  .menu-card:hover .menu-card-img-wrap img { transform: scale(1.06); }
+
+  .menu-card-img-placeholder {
+    width: 100%; height: 200px;
+    background: linear-gradient(135deg, #1e1508 0%, #2a1e0a 100%);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 8px;
+  }
+  .menu-card-img-placeholder img {
+    width: 64px; height: 64px; border-radius: 50%;
+    object-fit: cover; opacity: 0.7;
+    border: 2px solid var(--border);
+  }
+  .menu-card-img-placeholder span {
+    font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .menu-card-body { padding: 1.2rem; }
+  .menu-card-cat {
+    font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 0.35rem;
+  }
+  .menu-card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; color: var(--white);
+    margin-bottom: 0.5rem; font-weight: 700; line-height: 1.3;
+  }
+  .menu-card-desc {
+    font-size: 0.78rem; color: var(--text-muted);
+    line-height: 1.6; margin-bottom: 1.1rem;
+  }
+  .menu-card-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .menu-card-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; color: var(--gold-light); font-weight: 700;
+  }
+  .menu-order-btn {
+    background: rgba(232,101,10,0.12);
+    border: 1px solid var(--orange);
+    color: var(--orange);
+    padding: 0.42rem 1rem;
+    border-radius: 2px;
+    font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+    cursor: pointer; transition: all 0.2s;
+    text-decoration: none; font-family: 'DM Sans', sans-serif;
+    white-space: nowrap;
+  }
+  .menu-order-btn:hover { background: var(--orange); color: var(--white); }
+
+  /* ══════════════════════════════
+     GALLERY
+  ══════════════════════════════ */
+  #gallery {}
+  .gallery-header { margin-bottom: 3rem; }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 200px;
+    gap: 8px;
+  }
+  .g-item {
+    overflow: hidden; border-radius: 4px;
+    position: relative; cursor: pointer;
+    background: var(--card2);
+  }
+  .g-item img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.55s cubic-bezier(0.16,1,0.3,1);
+    display: block;
+  }
+  .g-item:hover img { transform: scale(1.07); }
+  .g-item::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 55%);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .g-item:hover::after { opacity: 1; }
+
+  .g-item.large { grid-column: span 5; grid-row: span 2; }
+  .g-item.wide { grid-column: span 4; }
+  .g-item.tall { grid-column: span 3; grid-row: span 2; }
+  .g-item.med { grid-column: span 4; }
+  .g-item.sm { grid-column: span 3; }
+
+  /* ══════════════════════════════
+     REVIEWS
+  ══════════════════════════════ */
+  #reviews { background: var(--deep); text-align: center; }
+  .reviews-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .review-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 2rem;
+    text-align: left;
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  }
+  .review-card:hover {
+    border-color: var(--orange);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+  }
+  .stars {
+    color: var(--gold-light); font-size: 0.95rem;
+    margin-bottom: 1rem; letter-spacing: 2px;
+  }
+  .review-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; line-height: 1.75;
+    color: var(--cream-muted); margin-bottom: 1.5rem; font-style: italic;
+  }
+  .reviewer { display: flex; align-items: center; gap: 12px; }
+  .reviewer-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--card2);
+    border: 2px solid var(--border);
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .reviewer-avatar img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .reviewer-info .name { font-size: 0.85rem; font-weight: 500; color: var(--white); }
+  .reviewer-info .origin { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; }
+
+  /* ══════════════════════════════
+     CONTACT
+  ══════════════════════════════ */
+  #contact {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+    align-items: start;
+  }
+
+  .contact-details { margin-top: 2.5rem; }
+  .contact-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .contact-icon {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: rgba(232,101,10,0.1);
+    border: 1px solid rgba(232,101,10,0.2);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-icon img {
+    width: 20px; height: 20px; object-fit: contain;
+    border-radius: 50%;
+  }
+  .contact-icon-emoji { font-size: 1rem; }
+  .contact-item-label {
+    font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 0.3rem;
+  }
+  .contact-item-val { font-size: 0.92rem; color: var(--white); line-height: 1.5; }
+  .contact-item-val a { color: var(--white); text-decoration: none; transition: color 0.2s; }
+  .contact-item-val a:hover { color: var(--orange); }
+
+  .whatsapp-big {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--green-wa);
+    color: var(--white); text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 3px;
+    font-size: 1rem; font-weight: 500;
+    margin-top: 2rem;
+    transition: all 0.25s;
+    width: fit-content;
+  }
+  .whatsapp-big:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(37,211,102,0.4);
+    background: #20be5a;
+  }
+  .wa-icon {
+    width: 24px; height: 24px; flex-shrink: 0;
+  }
+
+  /* Reservation form */
+  .reservation-form {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 2.5rem;
+  }
+  .form-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; color: var(--white); margin-bottom: 0.4rem;
+    font-style: italic;
+  }
+  .form-subtitle { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.5; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label {
+    font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--cream-muted);
+  }
+  .form-group input, .form-group select, .form-group textarea {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    color: var(--white);
+    padding: 0.75rem 1rem;
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    outline: none;
+    transition: border-color 0.25s;
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: var(--text-muted); }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--orange);
+    background: rgba(232,101,10,0.04);
+  }
+  .form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 2.5rem; }
+  .form-group select option { background: #1a1a1a; color: var(--white); }
+  .form-group textarea { min-height: 100px; resize: vertical; }
+  .form-group.full { grid-column: span 2; }
+  .submit-btn {
+    width: 100%;
+    background: var(--orange);
+    color: var(--white);
+    border: none;
+    padding: 1rem;
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s;
+    margin-top: 0.5rem;
+  }
+  .submit-btn:hover {
+    background: var(--orange-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(232,101,10,0.4);
+  }
+
+  /* ══════════════════════════════
+     MAP
+  ══════════════════════════════ */
+  #map-section { padding: 0; }
+  .map-container {
+    position: relative;
+    height: 420px;
+    background: #111;
+    overflow: hidden;
+  }
+  .map-container iframe {
+    width: 100%; height: 100%; border: 0;
+    filter: grayscale(25%) contrast(1.1) brightness(0.85);
+    display: block;
+  }
+  .map-overlay-card {
+    position: absolute; top: 2rem; left: 3rem;
+    background: rgba(10,10,10,0.94);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.5rem 1.8rem;
+    z-index: 5;
+    max-width: 260px;
+  }
+  .map-overlay-card .logo-sm {
+    width: 46px; height: 46px; border-radius: 50%;
+    border: 2px solid var(--orange); margin-bottom: 0.8rem;
+    object-fit: cover; display: block;
+  }
+  .map-overlay-card .title {
+    font-family: 'Playfair Display', serif;
+    color: var(--white); font-size: 1.05rem;
+    margin-bottom: 0.3rem; font-style: italic;
+  }
+  .map-overlay-card .addr {
+    font-size: 0.8rem; color: var(--text-muted); line-height: 1.55;
+  }
+  .map-overlay-card a {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 1rem;
+    color: var(--orange); font-size: 0.75rem; text-decoration: none;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .map-overlay-card a:hover { color: var(--orange-light); }
+
+  /* ══════════════════════════════
+     FOOTER
+  ══════════════════════════════ */
+  footer {
+    background: #070707;
+    border-top: 1px solid var(--border);
+    padding: 4rem 4vw 2rem;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3.5rem;
+    margin-bottom: 3rem;
+  }
+  .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+  .footer-logo img {
+    width: 50px; height: 50px; border-radius: 50%;
+    border: 2px solid var(--orange); object-fit: cover;
+  }
+  .footer-logo-text .brand { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--white); font-style: italic; }
+  .footer-logo-text .sub { font-size: 0.58rem; letter-spacing: 0.2em; color: var(--orange); text-transform: uppercase; }
+  .footer-desc {
+    font-size: 0.83rem; color: var(--text-muted); line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+  .social-links { display: flex; gap: 0.7rem; }
+  .social-link {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--card);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--cream-muted); text-decoration: none; font-size: 0.9rem;
+    transition: all 0.25s;
+  }
+  .social-link:hover { background: var(--orange); border-color: var(--orange); color: var(--white); }
+  .social-link img { width: 18px; height: 18px; object-fit: contain; }
+
+  .footer-col h4 {
+    font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 1.2rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.55rem; }
+  .footer-col ul li a {
+    color: var(--text-muted); text-decoration: none;
+    font-size: 0.83rem; transition: color 0.2s;
+  }
+  .footer-col ul li a:hover { color: var(--orange); }
+  .footer-hours li { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 0.4rem; }
+  .footer-hours .today { color: var(--orange-light); }
+
+  .footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 1.8rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 0.8rem;
+  }
+  .footer-bottom p { font-size: 0.75rem; color: var(--text-muted); }
+  .footer-bottom a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+  .footer-bottom a:hover { color: var(--orange); }
+  .heart { color: var(--orange); }
+
+  /* ══════════════════════════════
+     FLOATING WHATSAPP
+  ══════════════════════════════ */
+  .float-wa {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 500;
+    width: 58px; height: 58px; border-radius: 50%;
+    background: var(--green-wa);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+    text-decoration: none;
+    animation: pulseWa 2.5s ease-in-out infinite;
+    transition: transform 0.2s;
+  }
+  .float-wa:hover { transform: scale(1.12); animation-play-state: paused; }
+  .float-wa svg { width: 28px; height: 28px; }
+  @keyframes pulseWa {
+    0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.5); }
+    50% { box-shadow: 0 4px 38px rgba(37,211,102,0.85); }
+  }
+
+  /* ══════════════════════════════
+     TOAST
+  ══════════════════════════════ */
+  .toast {
+    position: fixed; bottom: 6.5rem; right: 2rem; z-index: 600;
+    background: var(--card2);
+    border: 1px solid var(--orange);
+    border-radius: 6px; padding: 1rem 1.5rem;
+    color: var(--white); font-size: 0.88rem;
+    transform: translateX(120%);
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+    max-width: 280px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+  }
+  .toast.show { transform: translateX(0); }
+  .toast .t-title { color: var(--orange); font-weight: 600; margin-bottom: 0.25rem; font-size: 0.9rem; }
+
+  /* ══════════════════════════════
+     SCROLL REVEAL
+  ══════════════════════════════ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.75s ease, transform 0.75s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ══════════════════════════════
+     RESPONSIVE — TABLET
+  ══════════════════════════════ */
+  @media (max-width: 1100px) {
+    #about { grid-template-columns: 1fr; gap: 3rem; }
+    .about-images { max-width: 520px; margin: 0 auto; }
+    .about-img-accent { right: 0; bottom: -2rem; }
+    .hero-right { display: none; }
+    .hero-content { max-width: 100%; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    #contact { grid-template-columns: 1fr; gap: 3rem; }
+    .gallery-grid { grid-template-columns: repeat(6, 1fr); }
+    .g-item.large { grid-column: span 3; grid-row: span 2; }
+    .g-item.wide { grid-column: span 3; }
+    .g-item.tall { grid-column: span 3; grid-row: span 1; }
+    .g-item.med { grid-column: span 3; }
+    .g-item.sm { grid-column: span 3; }
+  }
+
+  /* ══════════════════════════════
+     RESPONSIVE — MOBILE
+  ══════════════════════════════ */
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+
+    section { padding: 4rem 5vw; }
+    #hero { padding-top: 70px; }
+
+    .hero-title { font-size: clamp(2.2rem, 9vw, 3rem); }
+    .hero-stats { gap: 1.5rem; margin-top: 2rem; padding-top: 1.5rem; }
+    .stat-num { font-size: 1.6rem; }
+
+    .menu-grid { grid-template-columns: 1fr; }
+    .menu-tabs { gap: 0.4rem; }
+    .tab-btn { font-size: 0.7rem; padding: 0.5rem 0.9rem; }
+
+    .reviews-grid { grid-template-columns: 1fr; }
+
+    .gallery-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-auto-rows: 160px;
+    }
+    .g-item.large, .g-item.tall { grid-column: span 1; grid-row: span 1; }
+    .g-item.wide, .g-item.med, .g-item.sm { grid-column: span 1; }
+
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .about-badge-float { display: none; }
+    .about-features { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .form-group.full { grid-column: span 1; }
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+    .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+
+    .map-overlay-card { top: 1rem; left: 1rem; padding: 1rem 1.2rem; max-width: 200px; }
+    .map-container { height: 350px; }
+
+    .footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    .reservation-form { padding: 1.8rem; }
+  }
+
+  @media (max-width: 480px) {
+    nav { padding: 0.8rem 4vw; }
+    .hero-title { font-size: clamp(2rem, 10vw, 2.8rem); }
+    .section-title { font-size: clamp(1.7rem, 7vw, 2.4rem); }
+    .tab-btn { font-size: 0.65rem; padding: 0.45rem 0.75rem; gap: 4px; }
+    .tab-btn img { width: 14px; height: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── FLOATING WHATSAPP ── -->
+<a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="float-wa" title="Order on WhatsApp" aria-label="Order on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.570-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- ── TOAST ── -->
+<div class="toast" id="toast" role="alert">
+  <div class="t-title">Message Sent!</div>
+  We'll get back to you shortly on WhatsApp.
+</div>
+
+<!-- ── MOBILE NAV ── -->
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <a href="#hero" onclick="closeMobileNav()">Home</a>
+  <a href="#about" onclick="closeMobileNav()">About</a>
+  <a href="#menu" onclick="closeMobileNav()">Menu</a>
+  <a href="#gallery" onclick="closeMobileNav()">Gallery</a>
+  <a href="#reviews" onclick="closeMobileNav()">Reviews</a>
+  <a href="#contact" onclick="closeMobileNav()">Contact</a>
+  <a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="mobile-wa" onclick="closeMobileNav()">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.570-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Order on WhatsApp
+  </a>
+</div>
+
+<!-- ── NAV ── -->
+<nav id="mainNav" role="navigation">
+  <a href="#hero" class="nav-logo" aria-label="Inspector's Kitchen - Home">
+    <img src="img/logo.png" alt="Inspector's Kitchen" class="nav-logo-img">
+    <div class="nav-logo-text">
+      <span class="brand">Inspector's Kitchen</span>
+      <span class="sub">African Food · Istanbul</span>
+    </div>
+  </a>
+  <ul class="nav-links" role="list">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://wa.me/905397996551" class="nav-cta" target="_blank" rel="noopener">Order Now</a>
+  <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileNav">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ══════════════════════════════
+     HERO
+══════════════════════════════ -->
+<section id="hero" aria-label="Hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="hero-badge-icon" aria-hidden="true"></span>
+      Istanbul's Finest African Kitchen
+    </div>
+    <h1 class="hero-title">
+      Taste of<br><em>Homemade</em><br><span class="outline">African Food</span>
+    </h1>
+    <p class="hero-subtitle">
+      Jollof &middot; Egusi &middot; Pepper Soup &middot; Okro<br>
+      Freshly cooked daily, delivered to your door.
+    </p>
+    <div class="hero-actions">
+      <a href="#menu" class="btn-primary">View Our Menu &rarr;</a>
+      <a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="btn-secondary">
+        <svg class="wa-icon" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.570-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Order on WhatsApp
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">1.2K+</div>
+        <div class="stat-label">Happy Customers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">40+</div>
+        <div class="stat-label">Menu Items</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">Daily</div>
+        <div class="stat-label">Fresh Cooked</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right" aria-hidden="true">
+    <div class="hero-img-frame">
+      <div class="hero-img-grid">
+        <img src="img/jollof_rice.jpg" alt="Jollof Rice" loading="eager">
+        <img src="img/chicken.jpeg" alt="Chicken dish" loading="eager">
+        <img src="img/fried_rice.jpg" alt="Fried Rice" loading="eager">
+      </div>
+      <div class="logo-overlay">
+        <div class="logo-circle">
+          <img src="img/logo.png" alt="Inspector's Kitchen Logo">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MARQUEE ── -->
+<div class="marquee-bar" aria-hidden="true">
+  <div class="marquee-inner">
+    <span class="marquee-item"><img src="img/jollof_rice.jpg" alt=""> Jollof Rice</span>
+    <span class="marquee-dot">&diams;</span>
+    <span class="marquee-item"><img src="img/egushi.jpg" alt=""> Egusi Soup</span>
+    <span class="marquee-dot">&diams;</span>
+    <span class="marquee-item"><img src="img/chicken.jpeg" alt=""> Pepper Soup</span>
+    <span class="marquee-dot">&diams;</span>
+    <span class="marquee-item"><img src="img/fried_rice.jpg" alt=""> Fried Rice</span>
+    <span class="marquee-dot">&diams;</span>
+    <span class="marquee-item"><img src="img/ofada_rice.jpg" alt=""> Ofada Rice</span>
+    <span class="marquee-dot">&diams;</span>
+    <span class="marquee-item"><img src="img/rice_beans.jpg" alt=""> Banga Soup</span>
+    <span class="marquee-dot">&diams;</span>
+    <span class="marquee-item"><img src="img/rice_beans_egg.jpeg" alt=""> Ewa Agoyin</span>
+    <span class="marquee-dot">&diams;</span>
+    <!-- duplicate for seamless loop -->
+    <span class="marquee-item"><img src="img/jollof_rice.jpg" alt=""> Jollof Rice</span>
+    <span class="marquee-dot">&diams;</span>
+    <span class="marquee-item"><img src="img/egushi.jpg" alt=""> Egusi Soup</span>
+    <span class="marquee-dot">&diams;</span>
+    <span class="marquee-item"><img src="img/chicken.jpeg" alt=""> Pepper Soup</span>
+    <span class="marquee-dot">&diams;</span>
+    <span class="marquee-item"><img src="img/fried_rice.jpg" alt=""> Fried Rice</span>
+    <span class="marquee-dot">&diams;</span>
+    <span class="marquee-item"><img src="img/ofada_rice.jpg" alt=""> Ofada Rice</span>
+    <span class="marquee-dot">&diams;</span>
+    <span class="marquee-item"><img src="img/rice_beans.jpg" alt=""> Banga Soup</span>
+    <span class="marquee-dot">&diams;</span>
+    <span class="marquee-item"><img src="img/rice_beans_egg.jpeg" alt=""> Ewa Agoyin</span>
+    <span class="marquee-dot">&diams;</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     ABOUT
+══════════════════════════════ -->
+<section id="about" class="reveal">
+  <div class="about-images">
+    <img src="img/chef.jpg" alt="Inspector's Kitchen Chef cooking authentic African food" class="about-img-main">
+    <img src="img/chicken.jpeg" alt="Delicious food spread" class="about-img-accent">
+    <div class="about-badge-float" aria-hidden="true">
+      <img src="img/logo.png" alt="">
+      <span>Authentic<br>Flavors</span>
+    </div>
+  </div>
+  <div class="about-content">
+    <div class="section-label">Our Story</div>
+    <h2 class="section-title">Bringing <em>Africa</em> to the Heart of Istanbul</h2>
+    <p class="section-body">
+      Inspector's Kitchen was born out of a passion for authentic African home cooking.
+      Nestled in Istanbul, Turkey, we bring the bold, comforting flavours of West Africa —
+      from smoky Jollof Rice to rich Pepper Soup — to every doorstep.
+      <br><br>
+      Every meal is freshly prepared daily with love, premium ingredients, and the same
+      care you'd get in a Nigerian home kitchen. Whether you're craving a taste of home
+      or curious to discover something extraordinary — we've got you covered.
+    </p>
+    <div class="about-features">
+      <div class="about-feature">
+        <div class="feat-icon"><img src="img/fried_rice.jpg" alt=""></div>
+        <div class="feat-title">Freshly Cooked Daily</div>
+        <div class="feat-desc">No reheating, no shortcuts. Every dish prepared fresh to order.</div>
+      </div>
+      <div class="about-feature">
+        <div class="feat-icon"><img src="img/jollof_rice.jpg" alt=""></div>
+        <div class="feat-title">Delivery Available</div>
+        <div class="feat-desc">We deliver across Istanbul. Order on WhatsApp for same-day delivery.</div>
+      </div>
+      <div class="about-feature">
+        <div class="feat-icon"><img src="img/egushi.jpg" alt=""></div>
+        <div class="feat-title">Authentic Recipes</div>
+        <div class="feat-desc">Traditional West African recipes, unchanged and uncompromised.</div>
+      </div>
+      <div class="about-feature">
+        <div class="feat-icon"><img src="img/rice_beans.jpg" alt=""></div>
+        <div class="feat-title">Made with Love</div>
+        <div class="feat-desc">Homestyle cooking that tastes exactly like grandma's kitchen.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     MENU
+══════════════════════════════ -->
+<section id="menu">
+  <div class="menu-header">
+    <div class="section-label">What We Serve</div>
+    <h2 class="section-title">Our <em>Menu</em></h2>
+    <p class="section-body" style="margin: 0 auto; text-align: center;">
+      Order early — fresh meals guaranteed every day.<br>
+      Contact us on WhatsApp: <strong style="color:var(--orange)">+90 539 799 6551</strong>
+    </p>
+  </div>
+
+  <div class="menu-tabs" role="tablist">
+    <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-rice" onclick="showTab('rice', this)">
+      <img src="img/jollof_rice.jpg" alt=""> Rice Dishes
+    </button>
+    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-soups" onclick="showTab('soups', this)">
+      <img src="img/egushi.jpg" alt=""> Soups &amp; Swallows
+    </button>
+    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-proteins" onclick="showTab('proteins', this)">
+      <img src="img/chicken.jpeg" alt=""> Proteins &amp; Stews
+    </button>
+    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-pepper" onclick="showTab('pepper', this)">
+      <img src="img/rice_beans.jpg" alt=""> Pepper Soups
+    </button>
+    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-grills" onclick="showTab('grills', this)">
+      <img src="img/ofada_rice.jpg" alt=""> Grills &amp; Fries
+    </button>
+    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-local" onclick="showTab('local', this)">
+      <img src="img/rice_beans_egg.jpeg" alt=""> Local Favorites
+    </button>
+    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-sides" onclick="showTab('sides', this)">
+      <img src="img/rice_beans.jpg" alt=""> Sides
+    </button>
+  </div>
+
+  <!-- RICE -->
+  <div class="menu-panel active" id="tab-rice" role="tabpanel">
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="menu-card-img-wrap">
+          <img src="img/jollof_rice.jpg" alt="Jollof Rice with Turkey" loading="lazy">
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-cat">Rice Dishes</div>
+          <div class="menu-card-name">Jollof Rice + Turkey</div>
+          <div class="menu-card-desc">Classic party Jollof with perfectly seasoned turkey. The Nigerian staple that started it all.</div>
+          <div class="menu-card-footer">
+            <span class="menu-card-price">Inquire</span>
+            <a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img-wrap">
+          <img src="img/fried_rice.jpg" alt="Fried Rice with Chicken" loading="lazy">
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-cat">Rice Dishes</div>
+          <div class="menu-card-name">Fried Rice + Chicken or Turkey</div>
+          <div class="menu-card-desc">Colourful, aromatic fried rice with vegetables and your choice of protein.</div>
+          <div class="menu-card-footer">
+            <span class="menu-card-price">Inquire</span>
+            <a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img-wrap">
+          <img src="img/ofada_rice.jpg" alt="Ofada" loading="lazy">
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-cat">Rice Dishes</div>
+          <div class="menu-card-name">Ofada Rice + Ofada Sauce</div>
+          <div class="menu-card-desc">Unpolished local rice served with the iconic green pepper Ofada sauce.</div>
+          <div class="menu-card-footer">
+            <span class="menu-card-price">Inquire</span>
+            <a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img-wrap">
+          <img src="img/rice_beans.jpg" alt="Ofada Rice with Ofada Sauce" loading="lazy">
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-cat">Rice + Beans</div>
+          <div class="menu-card-name"></div>
+          <div class="menu-card-desc">Hearty combination of fluffy rice and well-seasoned beans, a wholesome Nigerian staple.</div>
+          <div class="menu-card-footer">
+            <span class="menu-card-price">Inquire</span>
+            <a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOUPS -->
+  <div class="menu-panel" id="tab-soups" role="tabpanel">
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="menu-card-img-wrap">
+          <img src="img/egushi.jpg" alt="Egusi Soup" loading="lazy">
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-cat">Soups &amp; Swallows</div>
+          <div class="menu-card-name">Egusi Soup + Poundo</div>
+          <div class="menu-card-desc">Richly ground melon seed soup, slow-cooked with assorted meat and crayfish.</div>
+          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img-placeholder">
+          <img src="img/rice_beans.jpg" alt=""><span>Vegetable Soup</span>
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-cat">Soups &amp; Swallows</div>
+          <div class="menu-card-name">Vegetable Soup + Eba</div>
+          <div class="menu-card-desc">Fresh leafy vegetable soup paired with smooth Eba. A Nigerian classic.</div>
+          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img-placeholder">
+          <img src="img/jollof_rice.jpg" alt=""><span>Okro Soup</span>
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-cat">Soups &amp; Swallows</div>
+          <div class="menu-card-name">Okro Soup + Eba or Pounded Yam</div>
+          <div class="menu-card-desc">Silky okra soup with meat, fish and seasoning served with your choice of swallow.</div>
+          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img-placeholder">
+          <img src="img/ofada_rice.jpg" alt=""><span>Ogbono Soup</span>
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-cat">Soups &amp; Swallows</div>
+          <div class="menu-card-name">Ogbono Soup + Swallow</div>
+          <div class="menu-card-desc">Draw soup made from ground ogbono seeds. Deep, satisfying, and comforting.</div>
+          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img-placeholder">
+          <img src="img/rice_beans_egg.jpeg" alt=""><span>Banga Soup</span>
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-cat">Soups &amp; Swallows</div>
+          <div class="menu-card-name">Banga + Semolina</div>
+          <div class="menu-card-desc">Delta State palm nut soup with distinctive spices, served with soft semolina.</div>
+          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROTEINS -->
+  <div class="menu-panel" id="tab-proteins" role="tabpanel">
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="menu-card-img-wrap">
+          <img src="img/chicken.jpeg" alt="Chicken Stew" loading="lazy">
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-cat">Proteins &amp; Stews</div>
+          <div class="menu-card-name">Chicken Stew</div>
+          <div class="menu-card-desc">Tender chicken pieces in bold tomato stew. Perfect with any rice or swallow.</div>
+          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img-placeholder">
+          <img src="img/jollof_rice.jpg" alt=""><span>Turkey Stew</span>
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-cat">Proteins &amp; Stews</div>
+          <div class="menu-card-name">Turkey Stew</div>
+          <div class="menu-card-desc">Slow-cooked turkey in rich tomato and pepper stew — a Sunday special.</div>
+          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img-placeholder">
+          <img src="img/ofada_rice.jpg" alt=""><span>Goat Meat</span>
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-cat">Proteins &amp; Stews</div>
+          <div class="menu-card-name">Goat Meat Pepper</div>
+          <div class="menu-card-desc">Spiced goat meat prepared in authentic pepper sauce. Bold and satisfying.</div>
+          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img-placeholder">
+          <img src="img/rice_beans.jpg" alt=""><span>Beef Pepper</span>
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-cat">Proteins &amp; Stews</div>
+          <div class="menu-card-name">Beef Pepper</div>
+          <div class="menu-card-desc">Succulent beef pieces in peppery sauce. Pairs perfectly with cold drinks.</div>
+          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PEPPER SOUPS -->
+  <div class="menu-panel" id="tab-pepper" role="tabpanel">
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="menu-card-img-placeholder">
+          <img src="img/rice_beans.jpg" alt=""><span>Goat Meat Pepper Soup</span>
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-cat">Pepper Soups</div>
+          <div class="menu-card-name">Goat Meat Pepper Soup</div>
+          <div class="menu-card-desc">Spiced light broth with tender goat meat and traditional pepper soup spices.</div>
+          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img-placeholder">
+          <img src="img/chicken.jpeg" alt=""><span>Assorted Pepper Soup</span>
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-cat">Pepper Soups</div>
+          <div class="menu-card-name">Assorted Meat Pepper Soup</div>
+          <div class="menu-card-desc">A hearty mix of beef, tripe and other assorted cuts in spicy pepper broth.</div>
+          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img-placeholder">
+          <img src="img/rice_beans_egg.jpeg" alt=""><span>Fish Pepper Soup</span>
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-cat">Pepper Soups</div>
+          <div class="menu-card-name">Fish Pepper Soup</div>
+          <div class="menu-card-desc">Delicate fish in aromatic, spiced broth. Light yet deeply flavourful.</div>
+          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRILLS -->
+  <div class="menu-panel" id="tab-grills" role="tabpanel">
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="menu-card-img-placeholder">
+          <img src="img/rice_beans_egg.jpeg" alt=""><span>Fried Fish</span>
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-cat">Grills &amp; Fries</div>
+          <div class="menu-card-name">Fried Fish</div>
+          <div class="menu-card-desc">Crispy on the outside, tender within. Seasoned and deep-fried to perfection.</div>
+          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img-placeholder">
+          <img src="img/ofada_rice.jpg" alt=""><span>Grilled Fish</span>
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-cat">Grills &amp; Fries</div>
+          <div class="menu-card-name">Grilled Fish</div>
+          <div class="menu-card-desc">Chargrilled whole fish with pepper marinade and smoky flavour throughout.</div>
+          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img-placeholder">
+          <img src="img/rice_beans.jpg" alt=""><span>Boli — Roasted Plantain</span>
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-cat">Grills &amp; Fries</div>
+          <div class="menu-card-name">Boli (Roasted Plantain)</div>
+          <div class="menu-card-desc">Street-food classic. Roasted ripe plantain with groundnut sauce on the side.</div>
+          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img-placeholder">
+          <img src="img/fried_rice.jpg" alt=""><span>Fried Sides</span>
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-cat">Grills &amp; Fries</div>
+          <div class="menu-card-name">Fried Yam / Plantain / Potatoes</div>
+          <div class="menu-card-desc">Golden-fried sides. Crispy, seasoned, and utterly addictive.</div>
+          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOCAL FAVORITES -->
+  <div class="menu-panel" id="tab-local" role="tabpanel">
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="menu-card-img-wrap">
+          <img src="img/rice_beans_egg.jpeg" alt="Rice, Beans and Egg" loading="lazy">
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-cat">Local Favorites</div>
+          <div class="menu-card-name">Ewa Agoyin + Plantain</div>
+          <div class="menu-card-desc">Mashed beans cooked with distinctive Agoyin sauce, served with fried plantain.</div>
+          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img-placeholder">
+          <img src="img/ofada_rice.jpg" alt=""><span>Yam Porridge</span>
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-cat">Local Favorites</div>
+          <div class="menu-card-name">Yam Porridge</div>
+          <div class="menu-card-desc">Tender yam cooked down in a rich, peppery broth with vegetables and fish.</div>
+          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img-wrap">
+          <img src="img/rice_beans.jpg" alt="Beans Porridge" loading="lazy">
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-cat">Local Favorites</div>
+          <div class="menu-card-name">Beans Porridge</div>
+          <div class="menu-card-desc">Slow-cooked beans in seasoned broth. Wholesome, filling, and delicious.</div>
+          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIDES -->
+  <div class="menu-panel" id="tab-sides" role="tabpanel">
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="menu-card-img-placeholder">
+          <img src="img/rice_beans.jpg" alt=""><span>Salad</span>
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-cat">Sides</div>
+          <div class="menu-card-name">Salad</div>
+          <div class="menu-card-desc">Fresh garden salad to complement your main dish and balance the flavours.</div>
+          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img-placeholder">
+          <img src="img/rice_beans_egg.jpeg" alt=""><span>Moi Moi</span>
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-cat">Sides</div>
+          <div class="menu-card-name">Moi Moi</div>
+          <div class="menu-card-desc">Steamed black-eyed pea pudding, spiced and filled with egg and fish.</div>
+          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     GALLERY
+══════════════════════════════ -->
+<section id="gallery" class="reveal">
+  <div class="gallery-header">
+    <div class="section-label">Food Photography</div>
+    <h2 class="section-title">Taste it <em>Visually</em></h2>
+  </div>
+  <div class="gallery-grid" role="list">
+    <div class="g-item large" role="listitem">
+      <img src="img/jollof_rice.jpg" alt="Jollof Rice — Inspector's Kitchen" loading="lazy">
+    </div>
+    <div class="g-item wide" role="listitem">
+      <img src="img/rice_beans.jpg" alt="Rice and Beans" loading="lazy">
+    </div>
+    <div class="g-item wide" role="listitem">
+      <img src="img/fried_rice.jpg" alt="Fried Rice" loading="lazy">
+    </div>
+    <div class="g-item tall" role="listitem">
+      <img src="img/chef.jpg" alt="Chef at Inspector's Kitchen" loading="lazy">
+    </div>
+    <div class="g-item med" role="listitem">
+      <img src="img/egushi.jpg" alt="Egusi Soup" loading="lazy">
+    </div>
+    <div class="g-item sm" role="listitem">
+      <img src="img/chicken.jpeg" alt="Chicken dish" loading="lazy">
+    </div>
+    <div class="g-item med" role="listitem">
+      <img src="img/ofada_rice.jpg" alt="Ofada Rice" loading="lazy">
+    </div>
+    <div class="g-item sm" role="listitem">
+      <img src="img/rice_strew.jpg" alt="Rice, " loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     REVIEWS
+══════════════════════════════ -->
+<section id="reviews" class="reveal">
+  <div class="section-label" style="justify-content:center">Customer Love</div>
+  <h2 class="section-title" style="text-align:center">What Our <em>Customers</em> Say</h2>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">"Finally, real Nigerian food in Istanbul! The Jollof Rice transported me straight home to Lagos. I order every week without fail."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">
+          <img src="img/rice_beans.jpg" alt="Adaeze O.">
+        </div>
+        <div class="reviewer-info">
+          <div class="name">Adaeze O.</div>
+          <div class="origin">Nigerian, living in Istanbul</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">"The Egusi Soup is absolutely divine. My Turkish friends tried it and couldn't believe what they'd been missing. Chef is incredibly talented."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">
+          <img src="img/fried_rice.jpg" alt="Emeka T.">
+        </div>
+        <div class="reviewer-info">
+          <div class="name">Emeka T.</div>
+          <div class="origin">Nigerian student, Istanbul</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">"Ordered the Pepper Soup on a cold Istanbul winter night — it was everything. Fast delivery, huge portions, and packed with flavour. Highly recommend!"</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">
+          <img src="img/ofada_rice.jpg" alt="Fatima K.">
+        </div>
+        <div class="reviewer-info">
+          <div class="name">Fatima K.</div>
+          <div class="origin">Istanbul food lover</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     CONTACT
+══════════════════════════════ -->
+<section id="contact" class="reveal">
+  <div class="contact-info">
+    <div class="section-label">Get in Touch</div>
+    <h2 class="section-title">Order or <em>Enquire</em></h2>
+    <p class="section-body">We're always happy to hear from you. The quickest way to order is via WhatsApp — we respond fast!</p>
+    <div class="contact-details">
+      <div class="contact-item">
+        <div class="contact-icon"><span class="contact-icon-emoji">📍</span></div>
+        <div>
+          <div class="contact-item-label">Location</div>
+          <div class="contact-item-val">Istanbul, Turkey</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon"><span class="contact-icon-emoji">💬</span></div>
+        <div>
+          <div class="contact-item-label">WhatsApp (Orders)</div>
+          <div class="contact-item-val"><a href="https://wa.me/905397996551">+90 539 799 6551</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon"><span class="contact-icon-emoji">📸</span></div>
+        <div>
+          <div class="contact-item-label">Instagram</div>
+          <div class="contact-item-val"><a href="https://instagram.com/inspectorskitchen" target="_blank" rel="noopener">@inspectorskitchen</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon"><span class="contact-icon-emoji">🕐</span></div>
+        <div>
+          <div class="contact-item-label">Hours</div>
+          <div class="contact-item-val">
+            Monday – Saturday &middot; 10:00 – 21:00<br>
+            Sunday &middot; 11:00 – 19:00<br>
+            <small style="color:var(--orange)">Order early for fresh meals!</small>
+          </div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon"><span class="contact-icon-emoji">🚚</span></div>
+        <div>
+          <div class="contact-item-label">Delivery</div>
+          <div class="contact-item-val">
+            Available across Istanbul<br>
+            <small style="color:var(--text-muted)">Ask about delivery zones</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="whatsapp-big">
+      <svg class="wa-icon" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.570-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Order on WhatsApp
+    </a>
+  </div>
+
+  <div class="reservation-form">
+    <div class="form-title">Send a Message</div>
+    <p class="form-subtitle">For catering enquiries, large orders, or special requests.</p>
+    <div id="contactForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fname">Full Name</label>
+          <input type="text" id="fname" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label for="fphone">Phone / WhatsApp</label>
+          <input type="tel" id="fphone" placeholder="+90 ...">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="femail">Email Address</label>
+          <input type="email" id="femail" placeholder="you@email.com">
+        </div>
+        <div class="form-group">
+          <label for="ftype">Enquiry Type</label>
+          <select id="ftype">
+            <option>Regular Order</option>
+            <option>Catering / Event</option>
+            <option>Large Batch Order</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group full">
+          <label for="fmsg">Message</label>
+          <textarea id="fmsg" placeholder="Tell us what you'd like to order, special requests, delivery address, etc."></textarea>
+        </div>
+      </div>
+      <button type="button" class="submit-btn" onclick="submitForm()">Send Message &rarr;</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     MAP
+══════════════════════════════ -->
+<div id="map-section">
+  <div class="map-container">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d192756.49060279!2d28.748046!3d41.015137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa7040068086b%3A0xe1ccfe98bc01b0d0!2sIstanbul%2C%20Turkey!5e0!3m2!1sen!2str!4v1700000000000"
+      title="Inspector's Kitchen location — Istanbul, Turkey"
+      allowfullscreen
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+    <div class="map-overlay-card">
+      <img src="img/logo.png" alt="Inspector's Kitchen Logo" class="logo-sm">
+      <div class="title">Inspector's Kitchen</div>
+      <div class="addr">Istanbul, Turkey<br>Delivery Available Citywide</div>
+      <a href="https://wa.me/905397996551" target="_blank" rel="noopener">
+        Order on WhatsApp &rarr;
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     FOOTER
+══════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="img/logo.png" alt="Inspector's Kitchen">
+        <div class="footer-logo-text">
+          <div class="brand">Inspector's Kitchen</div>
+          <div class="sub">African Food &middot; Istanbul</div>
+        </div>
+      </div>
+      <p class="footer-desc">Bringing the bold, comforting flavours of West African home cooking to the heart of Istanbul, Turkey. Freshly made, delivered with love.</p>
+      <div class="social-links">
+        <a href="https://instagram.com/inspectorskitchen" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.570-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+        <a href="tel:+905397996551" class="social-link" aria-label="Call us">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02L6.6 10.8z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Menu Highlights</h4>
+      <ul>
+        <li><a href="#menu">Jollof Rice</a></li>
+        <li><a href="#menu">Egusi Soup</a></li>
+        <li><a href="#menu">Pepper Soup</a></li>
+        <li><a href="#menu">Grilled Fish</a></li>
+        <li><a href="#menu">Ewa Agoyin</a></li>
+        <li><a href="#menu">Ofada Rice</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Opening Hours</h4>
+      <ul class="footer-hours">
+        <li class="today">Mon – Fri: 10:00 – 21:00 ✓</li>
+        <li>Saturday: 10:00 – 21:00</li>
+        <li>Sunday: 11:00 – 19:00</li>
+        <li style="margin-top:0.8rem; color:var(--orange); font-style:italic;">Order early for<br>fresh meals!</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Inspector's Kitchen. All rights reserved. Made with <span class="heart">&#9829;</span> in Istanbul.</p>
+    <p>
+      <a href="tel:+905397996551">+90 539 799 6551</a>
+      &nbsp;&middot;&nbsp;
+      <a href="https://instagram.com/inspectorskitchen" target="_blank" rel="noopener">@inspectorskitchen</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  /* ── NAV SCROLL EFFECT ── */
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  /* ── HAMBURGER MENU ── */
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  let menuOpen = false;
+
+  function toggleMobileNav() {
+    menuOpen = !menuOpen;
+    hamburger.classList.toggle('is-open', menuOpen);
+    mobileNav.classList.toggle('open', menuOpen);
+    hamburger.setAttribute('aria-expanded', menuOpen);
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+  }
+
+  function closeMobileNav() {
+    menuOpen = false;
+    hamburger.classList.remove('is-open');
+    mobileNav.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menuOpen) closeMobileNav();
+  });
+
+  // Close on backdrop click
+  mobileNav.addEventListener('click', (e) => {
+    if (e.target === mobileNav) closeMobileNav();
+  });
+
+  /* ── MENU TABS ── */
+  function showTab(tabId, btn) {
+    document.querySelectorAll('.menu-panel').forEach(p => {
+      p.classList.remove('active');
+      p.setAttribute('aria-hidden', 'true');
+    });
+    document.querySelectorAll('.tab-btn').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
+    });
+    const panel = document.getElementById('tab-' + tabId);
+    if (panel) {
+      panel.classList.add('active');
+      panel.removeAttribute('aria-hidden');
+    }
+    if (btn) {
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+    }
+  }
+
+  /* ── SCROLL REVEAL ── */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  /* ── FORM SUBMIT ── */
+  function submitForm() {
+    const name = document.getElementById('fname').value.trim();
+    if (!name) {
+      document.getElementById('fname').focus();
+      return;
+    }
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 4500);
+    // Reset fields
+    ['fname','fphone','femail','fmsg'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.value = '';
+    });
+    document.getElementById('ftype').selectedIndex = 0;
+  }
+</script>
+</body>
+</html>
