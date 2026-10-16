@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inspector's Kitchen | Authentic African Food — Istanbul, Turkey</title>
-<meta name="description" content="Authentic West African home cooking in Istanbul. Jollof Rice, Egusi Soup, Pepper Soup & more. Order on WhatsApp for fresh daily delivery.">
+<title>Hara Grills | Menu, Orders & Table Bookings in Marian</title>
+<meta name="description" content="View the Hara Grills menu, check meal prices, order on WhatsApp or request a table. Located in Marian, beside Amber Lounge.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -68,13 +68,14 @@
     text-decoration: none; flex-shrink: 0;
   }
   .nav-logo-img {
-    width: 48px; height: 48px; border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--orange);
-    box-shadow: 0 0 16px rgba(232,101,10,0.35);
+    width: 64px; height: 64px; border-radius: 9px;
+    object-fit: contain; object-position: center;
+    background: #ffffff; padding: 2px;
+    border: 1px solid rgba(255,255,255,0.22);
+    box-shadow: 0 3px 12px rgba(0,0,0,0.22);
     transition: box-shadow 0.3s;
   }
-  .nav-logo:hover .nav-logo-img { box-shadow: 0 0 25px rgba(232,101,10,0.6); }
+  .nav-logo:hover .nav-logo-img { box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
   .nav-logo-text { display: flex; flex-direction: column; line-height: 1.15; }
   .nav-logo-text .brand { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--white); font-style: italic; }
   .nav-logo-text .sub { font-size: 0.58rem; letter-spacing: 0.25em; color: var(--orange); text-transform: uppercase; }
@@ -227,7 +228,7 @@
 
   .hero-badge-icon {
     width: 18px; height: 18px;
-    background: url('img/logo.png') center/cover no-repeat;
+    background: url('img/logo.png') center/contain no-repeat; background-color: #fff;
     border-radius: 50%;
     flex-shrink: 0;
   }
@@ -337,15 +338,15 @@
     z-index: 10;
   }
   .logo-circle {
-    width: 100px; height: 100px; border-radius: 50%;
-    background: var(--black);
-    border: 3px solid var(--orange);
+    width: 112px; height: 112px; border-radius: 14px;
+    background: #ffffff;
+    border: 1px solid rgba(255,255,255,0.45);
     display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 0 28px rgba(232,101,10,0.5), 0 0 60px rgba(232,101,10,0.2);
-    overflow: hidden; padding: 4px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.28);
+    overflow: hidden; padding: 6px;
   }
   .logo-circle img {
-    width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
+    width: 100%; height: 100%; object-fit: contain; object-position: center; border-radius: 8px;
   }
 
   .hero-stats {
@@ -877,8 +878,8 @@
   }
   .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
   .footer-logo img {
-    width: 50px; height: 50px; border-radius: 50%;
-    border: 2px solid var(--orange); object-fit: cover;
+    width: 58px; height: 58px; border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.2); object-fit: contain; background: #fff; padding: 2px;
   }
   .footer-logo-text .brand { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--white); font-style: italic; }
   .footer-logo-text .sub { font-size: 0.58rem; letter-spacing: 0.2em; color: var(--orange); text-transform: uppercase; }
@@ -1039,11 +1040,31 @@
     .tab-btn img { width: 14px; height: 14px; }
   }
 </style>
+<style>
+.cart-nav-btn{border:1px solid rgba(232,101,10,.55);background:transparent;color:var(--cream);padding:.55rem .9rem;font:500 .78rem 'DM Sans',sans-serif;letter-spacing:.06em;cursor:pointer;border-radius:3px;white-space:nowrap}
+.cart-nav-btn span{display:inline-grid;place-items:center;min-width:20px;height:20px;margin-left:5px;padding:0 5px;border-radius:50px;background:var(--orange);color:white;font-size:.72rem}
+.menu-order-btn{cursor:pointer;font-family:'DM Sans',sans-serif}
+.cart-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.68);z-index:1998;opacity:0;visibility:hidden;transition:opacity .25s}
+.cart-drawer{position:fixed;z-index:1999;top:0;right:0;width:min(480px,100%);height:100dvh;background:#111;border-left:1px solid var(--border);padding:24px;overflow-y:auto;transform:translateX(105%);transition:transform .3s ease;color:var(--cream)}
+.cart-open .cart-backdrop{opacity:1;visibility:visible}.cart-open .cart-drawer{transform:translateX(0)}
+.cart-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);padding-bottom:18px}
+.cart-head h2{font:700 1.8rem 'Playfair Display',serif;margin-top:5px}.eyebrow{font-size:.7rem;letter-spacing:.18em;color:var(--orange)}
+.cart-close{border:0;background:#222;color:white;font-size:2rem;width:40px;height:40px;cursor:pointer;border-radius:4px}
+.cart-note,.cart-disclaimer{font-size:.82rem;line-height:1.6;color:var(--cream-muted);margin:16px 0}
+.cart-empty{padding:24px 0;color:var(--cream-muted);font-size:.9rem}
+.cart-line{display:grid;grid-template-columns:1fr auto;gap:12px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.09)}
+.cart-line-name{font-weight:600;font-size:.92rem}.cart-line small{display:block;color:var(--cream-muted);margin-top:4px}
+.qty-controls{display:flex;align-items:center;gap:9px}.qty-controls button{width:28px;height:28px;background:#252525;border:1px solid var(--border);color:white;cursor:pointer;border-radius:3px}
+.cart-form{display:grid;gap:7px;margin-top:18px}.cart-form label{font-size:.78rem;color:var(--cream-muted);margin-top:7px}
+.cart-form input,.cart-form select,.cart-form textarea{width:100%;background:#1c1c1c;border:1px solid rgba(255,255,255,.14);border-radius:3px;padding:11px;color:white;font:inherit;font-size:.9rem}
+.cart-checkout{width:100%;margin-top:20px;padding:15px;background:var(--green-wa);color:white;border:0;border-radius:3px;font-weight:700;font-size:.92rem;cursor:pointer}
+@media(max-width:700px){.cart-nav-btn{padding:.45rem .55rem;font-size:.72rem}.nav-logo-img{width:48px;height:48px}.cart-drawer{padding:18px}}
+</style>
 </head>
 <body>
 
 <!-- ── FLOATING WHATSAPP ── -->
-<a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="float-wa" title="Order on WhatsApp" aria-label="Order on WhatsApp">
+<a href="https://wa.me/2348167284729" target="_blank" rel="noopener" class="float-wa" title="Order on WhatsApp" aria-label="Order on WhatsApp">
   <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.570-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
   </svg>
@@ -1063,7 +1084,7 @@
   <a href="#gallery" onclick="closeMobileNav()">Gallery</a>
   <a href="#reviews" onclick="closeMobileNav()">Reviews</a>
   <a href="#contact" onclick="closeMobileNav()">Contact</a>
-  <a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="mobile-wa" onclick="closeMobileNav()">
+  <a href="https://wa.me/2348167284729" target="_blank" rel="noopener" class="mobile-wa" onclick="closeMobileNav()">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.570-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     Order on WhatsApp
   </a>
@@ -1071,11 +1092,11 @@
 
 <!-- ── NAV ── -->
 <nav id="mainNav" role="navigation">
-  <a href="#hero" class="nav-logo" aria-label="Inspector's Kitchen - Home">
-    <img src="img/logo.png" alt="Inspector's Kitchen" class="nav-logo-img">
+  <a href="#hero" class="nav-logo" aria-label="Hara Grills - Home">
+    <img src="img/logo.png" alt="Hara Grills" class="nav-logo-img">
     <div class="nav-logo-text">
-      <span class="brand">Inspector's Kitchen</span>
-      <span class="sub">African Food · Istanbul</span>
+      <span class="brand">Hara Grills</span>
+      <span class="sub">Good Food · Marian</span>
     </div>
   </a>
   <ul class="nav-links" role="list">
@@ -1085,7 +1106,8 @@
     <li><a href="#reviews">Reviews</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="https://wa.me/905397996551" class="nav-cta" target="_blank" rel="noopener">Order Now</a>
+  <a href="https://wa.me/2348167284729" class="nav-cta" target="_blank" rel="noopener">Order Now</a>
+  <button class="cart-nav-btn" type="button" onclick="openCart()" aria-label="Open shopping cart">Cart <span id="cartCount">0</span></button>
   <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileNav">
     <span></span><span></span><span></span>
   </button>
@@ -1099,18 +1121,18 @@
   <div class="hero-content">
     <div class="hero-badge">
       <span class="hero-badge-icon" aria-hidden="true"></span>
-      Istanbul's Finest African Kitchen
+      Good Food, Made Fresh
     </div>
     <h1 class="hero-title">
-      Taste of<br><em>Homemade</em><br><span class="outline">African Food</span>
+      Good Food.<br><em>Great Taste.</em><br><span class="outline">Made to Satisfy.</span>
     </h1>
     <p class="hero-subtitle">
       Jollof &middot; Egusi &middot; Pepper Soup &middot; Okro<br>
-      Freshly cooked daily, delivered to your door.
+      Freshly prepared food, ready when you are.
     </p>
     <div class="hero-actions">
       <a href="#menu" class="btn-primary">View Our Menu &rarr;</a>
-      <a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="btn-secondary">
+      <a href="https://wa.me/2348167284729" target="_blank" rel="noopener" class="btn-secondary">
         <svg class="wa-icon" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.570-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Order on WhatsApp
       </a>
@@ -1140,7 +1162,7 @@
       </div>
       <div class="logo-overlay">
         <div class="logo-circle">
-          <img src="img/logo.png" alt="Inspector's Kitchen Logo">
+          <img src="img/logo.png" alt="Hara Grills Logo">
         </div>
       </div>
     </div>
@@ -1187,45 +1209,44 @@
 ══════════════════════════════ -->
 <section id="about" class="reveal">
   <div class="about-images">
-    <img src="img/chef.jpg" alt="Inspector's Kitchen Chef cooking authentic African food" class="about-img-main">
+    <img src="img/chef.jpg" alt="Hara Grills Chef cooking food" class="about-img-main">
     <img src="img/chicken.jpeg" alt="Delicious food spread" class="about-img-accent">
     <div class="about-badge-float" aria-hidden="true">
       <img src="img/logo.png" alt="">
-      <span>Authentic<br>Flavors</span>
+      <span>Good<br>Food</span>
     </div>
   </div>
   <div class="about-content">
     <div class="section-label">Our Story</div>
-    <h2 class="section-title">Bringing <em>Africa</em> to the Heart of Istanbul</h2>
+    <h2 class="section-title">Your Spot for Good Food in Marian</h2>
     <p class="section-body">
-      Inspector's Kitchen was born out of a passion for authentic African home cooking.
-      Nestled in Istanbul, Turkey, we bring the bold, comforting flavours of West Africa —
-      from smoky Jollof Rice to rich Pepper Soup — to every doorstep.
+      Looking for a good meal in Marian? Hara Grills serves up favourites like jollof rice,
+      fried rice, grilled chicken and pepper soup, with plenty more to choose from.
+      Find us beside Amber Lounge, Marian, and check the menu for what you feel like eating today.
       <br><br>
-      Every meal is freshly prepared daily with love, premium ingredients, and the same
-      care you'd get in a Nigerian home kitchen. Whether you're craving a taste of home
-      or curious to discover something extraordinary — we've got you covered.
+      See a meal you like? Check the price and send your order to us on WhatsApp. You can also
+      message us to request a table or ask about delivery.
     </p>
     <div class="about-features">
       <div class="about-feature">
         <div class="feat-icon"><img src="img/fried_rice.jpg" alt=""></div>
         <div class="feat-title">Freshly Cooked Daily</div>
-        <div class="feat-desc">No reheating, no shortcuts. Every dish prepared fresh to order.</div>
+        <div class="feat-desc">Fresh food, prepared with care.</div>
       </div>
       <div class="about-feature">
         <div class="feat-icon"><img src="img/jollof_rice.jpg" alt=""></div>
         <div class="feat-title">Delivery Available</div>
-        <div class="feat-desc">We deliver across Istanbul. Order on WhatsApp for same-day delivery.</div>
+        <div class="feat-desc">Message us on WhatsApp to ask about delivery in your area.</div>
       </div>
       <div class="about-feature">
         <div class="feat-icon"><img src="img/egushi.jpg" alt=""></div>
-        <div class="feat-title">Authentic Recipes</div>
-        <div class="feat-desc">Traditional West African recipes, unchanged and uncompromised.</div>
+        <div class="feat-title">Local Favourites</div>
+        <div class="feat-desc">Local favourites and meals worth coming back for.</div>
       </div>
       <div class="about-feature">
         <div class="feat-icon"><img src="img/rice_beans.jpg" alt=""></div>
         <div class="feat-title">Made with Love</div>
-        <div class="feat-desc">Homestyle cooking that tastes exactly like grandma's kitchen.</div>
+        <div class="feat-desc">Comforting meals with plenty of flavour.</div>
       </div>
     </div>
   </div>
@@ -1239,8 +1260,8 @@
     <div class="section-label">What We Serve</div>
     <h2 class="section-title">Our <em>Menu</em></h2>
     <p class="section-body" style="margin: 0 auto; text-align: center;">
-      Order early — fresh meals guaranteed every day.<br>
-      Contact us on WhatsApp: <strong style="color:var(--orange)">+90 539 799 6551</strong>
+      Browse the menu and message us to confirm prices and availability.<br>
+      Contact us on WhatsApp: <strong style="color:var(--orange)">08167284729</strong>
     </p>
   </div>
 
@@ -1273,15 +1294,15 @@
     <div class="menu-grid">
       <div class="menu-card">
         <div class="menu-card-img-wrap">
-          <img src="img/jollof_rice.jpg" alt="Jollof Rice with Turkey" loading="lazy">
+          <img src="img/jollof_rice.jpg" alt="Jollof Rice with Nigeria" loading="lazy">
         </div>
         <div class="menu-card-body">
           <div class="menu-card-cat">Rice Dishes</div>
           <div class="menu-card-name">Jollof Rice + Turkey</div>
-          <div class="menu-card-desc">Classic party Jollof with perfectly seasoned turkey. The Nigerian staple that started it all.</div>
+          <div class="menu-card-desc">Tasty Jollof Rice served with well-seasoned turkey.</div>
           <div class="menu-card-footer">
-            <span class="menu-card-price">Inquire</span>
-            <a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a>
+            <span class="menu-card-price">Ask for price</span>
+            <button type="button" class="menu-order-btn add-to-cart-btn" onclick="addMenuItem(this)">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -1292,10 +1313,10 @@
         <div class="menu-card-body">
           <div class="menu-card-cat">Rice Dishes</div>
           <div class="menu-card-name">Fried Rice + Chicken or Turkey</div>
-          <div class="menu-card-desc">Colourful, aromatic fried rice with vegetables and your choice of protein.</div>
+          <div class="menu-card-desc">Fried rice with vegetables and your choice of protein.</div>
           <div class="menu-card-footer">
-            <span class="menu-card-price">Inquire</span>
-            <a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a>
+            <span class="menu-card-price">Ask for price</span>
+            <button type="button" class="menu-order-btn add-to-cart-btn" onclick="addMenuItem(this)">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -1308,8 +1329,8 @@
           <div class="menu-card-name">Ofada Rice + Ofada Sauce</div>
           <div class="menu-card-desc">Unpolished local rice served with the iconic green pepper Ofada sauce.</div>
           <div class="menu-card-footer">
-            <span class="menu-card-price">Inquire</span>
-            <a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a>
+            <span class="menu-card-price">Ask for price</span>
+            <button type="button" class="menu-order-btn add-to-cart-btn" onclick="addMenuItem(this)">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -1322,8 +1343,8 @@
           <div class="menu-card-name"></div>
           <div class="menu-card-desc">Hearty combination of fluffy rice and well-seasoned beans, a wholesome Nigerian staple.</div>
           <div class="menu-card-footer">
-            <span class="menu-card-price">Inquire</span>
-            <a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a>
+            <span class="menu-card-price">Ask for price</span>
+            <button type="button" class="menu-order-btn add-to-cart-btn" onclick="addMenuItem(this)">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -1341,7 +1362,7 @@
           <div class="menu-card-cat">Soups &amp; Swallows</div>
           <div class="menu-card-name">Egusi Soup + Poundo</div>
           <div class="menu-card-desc">Richly ground melon seed soup, slow-cooked with assorted meat and crayfish.</div>
-          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+          <div class="menu-card-footer"><span class="menu-card-price">Ask for price</span><button type="button" class="menu-order-btn add-to-cart-btn" onclick="addMenuItem(this)">Add to Cart</button></div>
         </div>
       </div>
       <div class="menu-card">
@@ -1352,7 +1373,7 @@
           <div class="menu-card-cat">Soups &amp; Swallows</div>
           <div class="menu-card-name">Vegetable Soup + Eba</div>
           <div class="menu-card-desc">Fresh leafy vegetable soup paired with smooth Eba. A Nigerian classic.</div>
-          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+          <div class="menu-card-footer"><span class="menu-card-price">Ask for price</span><button type="button" class="menu-order-btn add-to-cart-btn" onclick="addMenuItem(this)">Add to Cart</button></div>
         </div>
       </div>
       <div class="menu-card">
@@ -1363,7 +1384,7 @@
           <div class="menu-card-cat">Soups &amp; Swallows</div>
           <div class="menu-card-name">Okro Soup + Eba or Pounded Yam</div>
           <div class="menu-card-desc">Silky okra soup with meat, fish and seasoning served with your choice of swallow.</div>
-          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+          <div class="menu-card-footer"><span class="menu-card-price">Ask for price</span><button type="button" class="menu-order-btn add-to-cart-btn" onclick="addMenuItem(this)">Add to Cart</button></div>
         </div>
       </div>
       <div class="menu-card">
@@ -1374,7 +1395,7 @@
           <div class="menu-card-cat">Soups &amp; Swallows</div>
           <div class="menu-card-name">Ogbono Soup + Swallow</div>
           <div class="menu-card-desc">Draw soup made from ground ogbono seeds. Deep, satisfying, and comforting.</div>
-          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+          <div class="menu-card-footer"><span class="menu-card-price">Ask for price</span><button type="button" class="menu-order-btn add-to-cart-btn" onclick="addMenuItem(this)">Add to Cart</button></div>
         </div>
       </div>
       <div class="menu-card">
@@ -1385,7 +1406,7 @@
           <div class="menu-card-cat">Soups &amp; Swallows</div>
           <div class="menu-card-name">Banga + Semolina</div>
           <div class="menu-card-desc">Delta State palm nut soup with distinctive spices, served with soft semolina.</div>
-          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+          <div class="menu-card-footer"><span class="menu-card-price">Ask for price</span><button type="button" class="menu-order-btn add-to-cart-btn" onclick="addMenuItem(this)">Add to Cart</button></div>
         </div>
       </div>
     </div>
@@ -1402,18 +1423,18 @@
           <div class="menu-card-cat">Proteins &amp; Stews</div>
           <div class="menu-card-name">Chicken Stew</div>
           <div class="menu-card-desc">Tender chicken pieces in bold tomato stew. Perfect with any rice or swallow.</div>
-          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+          <div class="menu-card-footer"><span class="menu-card-price">Ask for price</span><button type="button" class="menu-order-btn add-to-cart-btn" onclick="addMenuItem(this)">Add to Cart</button></div>
         </div>
       </div>
       <div class="menu-card">
         <div class="menu-card-img-placeholder">
-          <img src="img/jollof_rice.jpg" alt=""><span>Turkey Stew</span>
+          <img src="img/jollof_rice.jpg" alt=""><span>Nigeria Stew</span>
         </div>
         <div class="menu-card-body">
           <div class="menu-card-cat">Proteins &amp; Stews</div>
-          <div class="menu-card-name">Turkey Stew</div>
+          <div class="menu-card-name">Nigeria Stew</div>
           <div class="menu-card-desc">Slow-cooked turkey in rich tomato and pepper stew — a Sunday special.</div>
-          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+          <div class="menu-card-footer"><span class="menu-card-price">Ask for price</span><button type="button" class="menu-order-btn add-to-cart-btn" onclick="addMenuItem(this)">Add to Cart</button></div>
         </div>
       </div>
       <div class="menu-card">
@@ -1424,7 +1445,7 @@
           <div class="menu-card-cat">Proteins &amp; Stews</div>
           <div class="menu-card-name">Goat Meat Pepper</div>
           <div class="menu-card-desc">Spiced goat meat prepared in authentic pepper sauce. Bold and satisfying.</div>
-          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+          <div class="menu-card-footer"><span class="menu-card-price">Ask for price</span><button type="button" class="menu-order-btn add-to-cart-btn" onclick="addMenuItem(this)">Add to Cart</button></div>
         </div>
       </div>
       <div class="menu-card">
@@ -1435,7 +1456,7 @@
           <div class="menu-card-cat">Proteins &amp; Stews</div>
           <div class="menu-card-name">Beef Pepper</div>
           <div class="menu-card-desc">Succulent beef pieces in peppery sauce. Pairs perfectly with cold drinks.</div>
-          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+          <div class="menu-card-footer"><span class="menu-card-price">Ask for price</span><button type="button" class="menu-order-btn add-to-cart-btn" onclick="addMenuItem(this)">Add to Cart</button></div>
         </div>
       </div>
     </div>
@@ -1452,7 +1473,7 @@
           <div class="menu-card-cat">Pepper Soups</div>
           <div class="menu-card-name">Goat Meat Pepper Soup</div>
           <div class="menu-card-desc">Spiced light broth with tender goat meat and traditional pepper soup spices.</div>
-          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+          <div class="menu-card-footer"><span class="menu-card-price">Ask for price</span><button type="button" class="menu-order-btn add-to-cart-btn" onclick="addMenuItem(this)">Add to Cart</button></div>
         </div>
       </div>
       <div class="menu-card">
@@ -1463,7 +1484,7 @@
           <div class="menu-card-cat">Pepper Soups</div>
           <div class="menu-card-name">Assorted Meat Pepper Soup</div>
           <div class="menu-card-desc">A hearty mix of beef, tripe and other assorted cuts in spicy pepper broth.</div>
-          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+          <div class="menu-card-footer"><span class="menu-card-price">Ask for price</span><button type="button" class="menu-order-btn add-to-cart-btn" onclick="addMenuItem(this)">Add to Cart</button></div>
         </div>
       </div>
       <div class="menu-card">
@@ -1474,7 +1495,7 @@
           <div class="menu-card-cat">Pepper Soups</div>
           <div class="menu-card-name">Fish Pepper Soup</div>
           <div class="menu-card-desc">Delicate fish in aromatic, spiced broth. Light yet deeply flavourful.</div>
-          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+          <div class="menu-card-footer"><span class="menu-card-price">Ask for price</span><button type="button" class="menu-order-btn add-to-cart-btn" onclick="addMenuItem(this)">Add to Cart</button></div>
         </div>
       </div>
     </div>
@@ -1491,7 +1512,7 @@
           <div class="menu-card-cat">Grills &amp; Fries</div>
           <div class="menu-card-name">Fried Fish</div>
           <div class="menu-card-desc">Crispy on the outside, tender within. Seasoned and deep-fried to perfection.</div>
-          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+          <div class="menu-card-footer"><span class="menu-card-price">Ask for price</span><button type="button" class="menu-order-btn add-to-cart-btn" onclick="addMenuItem(this)">Add to Cart</button></div>
         </div>
       </div>
       <div class="menu-card">
@@ -1502,7 +1523,7 @@
           <div class="menu-card-cat">Grills &amp; Fries</div>
           <div class="menu-card-name">Grilled Fish</div>
           <div class="menu-card-desc">Chargrilled whole fish with pepper marinade and smoky flavour throughout.</div>
-          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+          <div class="menu-card-footer"><span class="menu-card-price">Ask for price</span><button type="button" class="menu-order-btn add-to-cart-btn" onclick="addMenuItem(this)">Add to Cart</button></div>
         </div>
       </div>
       <div class="menu-card">
@@ -1513,7 +1534,7 @@
           <div class="menu-card-cat">Grills &amp; Fries</div>
           <div class="menu-card-name">Boli (Roasted Plantain)</div>
           <div class="menu-card-desc">Street-food classic. Roasted ripe plantain with groundnut sauce on the side.</div>
-          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+          <div class="menu-card-footer"><span class="menu-card-price">Ask for price</span><button type="button" class="menu-order-btn add-to-cart-btn" onclick="addMenuItem(this)">Add to Cart</button></div>
         </div>
       </div>
       <div class="menu-card">
@@ -1524,7 +1545,7 @@
           <div class="menu-card-cat">Grills &amp; Fries</div>
           <div class="menu-card-name">Fried Yam / Plantain / Potatoes</div>
           <div class="menu-card-desc">Golden-fried sides. Crispy, seasoned, and utterly addictive.</div>
-          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+          <div class="menu-card-footer"><span class="menu-card-price">Ask for price</span><button type="button" class="menu-order-btn add-to-cart-btn" onclick="addMenuItem(this)">Add to Cart</button></div>
         </div>
       </div>
     </div>
@@ -1541,7 +1562,7 @@
           <div class="menu-card-cat">Local Favorites</div>
           <div class="menu-card-name">Ewa Agoyin + Plantain</div>
           <div class="menu-card-desc">Mashed beans cooked with distinctive Agoyin sauce, served with fried plantain.</div>
-          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+          <div class="menu-card-footer"><span class="menu-card-price">Ask for price</span><button type="button" class="menu-order-btn add-to-cart-btn" onclick="addMenuItem(this)">Add to Cart</button></div>
         </div>
       </div>
       <div class="menu-card">
@@ -1552,7 +1573,7 @@
           <div class="menu-card-cat">Local Favorites</div>
           <div class="menu-card-name">Yam Porridge</div>
           <div class="menu-card-desc">Tender yam cooked down in a rich, peppery broth with vegetables and fish.</div>
-          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+          <div class="menu-card-footer"><span class="menu-card-price">Ask for price</span><button type="button" class="menu-order-btn add-to-cart-btn" onclick="addMenuItem(this)">Add to Cart</button></div>
         </div>
       </div>
       <div class="menu-card">
@@ -1563,7 +1584,7 @@
           <div class="menu-card-cat">Local Favorites</div>
           <div class="menu-card-name">Beans Porridge</div>
           <div class="menu-card-desc">Slow-cooked beans in seasoned broth. Wholesome, filling, and delicious.</div>
-          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+          <div class="menu-card-footer"><span class="menu-card-price">Ask for price</span><button type="button" class="menu-order-btn add-to-cart-btn" onclick="addMenuItem(this)">Add to Cart</button></div>
         </div>
       </div>
     </div>
@@ -1580,7 +1601,7 @@
           <div class="menu-card-cat">Sides</div>
           <div class="menu-card-name">Salad</div>
           <div class="menu-card-desc">Fresh garden salad to complement your main dish and balance the flavours.</div>
-          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+          <div class="menu-card-footer"><span class="menu-card-price">Ask for price</span><button type="button" class="menu-order-btn add-to-cart-btn" onclick="addMenuItem(this)">Add to Cart</button></div>
         </div>
       </div>
       <div class="menu-card">
@@ -1591,7 +1612,7 @@
           <div class="menu-card-cat">Sides</div>
           <div class="menu-card-name">Moi Moi</div>
           <div class="menu-card-desc">Steamed black-eyed pea pudding, spiced and filled with egg and fish.</div>
-          <div class="menu-card-footer"><span class="menu-card-price">Inquire</span><a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="menu-order-btn">Order Now</a></div>
+          <div class="menu-card-footer"><span class="menu-card-price">Ask for price</span><button type="button" class="menu-order-btn add-to-cart-btn" onclick="addMenuItem(this)">Add to Cart</button></div>
         </div>
       </div>
     </div>
@@ -1608,7 +1629,7 @@
   </div>
   <div class="gallery-grid" role="list">
     <div class="g-item large" role="listitem">
-      <img src="img/jollof_rice.jpg" alt="Jollof Rice — Inspector's Kitchen" loading="lazy">
+      <img src="img/jollof_rice.jpg" alt="Jollof Rice — Hara Grills" loading="lazy">
     </div>
     <div class="g-item wide" role="listitem">
       <img src="img/rice_beans.jpg" alt="Rice and Beans" loading="lazy">
@@ -1617,7 +1638,7 @@
       <img src="img/fried_rice.jpg" alt="Fried Rice" loading="lazy">
     </div>
     <div class="g-item tall" role="listitem">
-      <img src="img/chef.jpg" alt="Chef at Inspector's Kitchen" loading="lazy">
+      <img src="img/chef.jpg" alt="Chef at Hara Grills" loading="lazy">
     </div>
     <div class="g-item med" role="listitem">
       <img src="img/egushi.jpg" alt="Egusi Soup" loading="lazy">
@@ -1643,40 +1664,40 @@
   <div class="reviews-grid">
     <div class="review-card">
       <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <p class="review-text">"Finally, real Nigerian food in Istanbul! The Jollof Rice transported me straight home to Lagos. I order every week without fail."</p>
+      <p class="review-text">"The food was tasty and the Jollof Rice was a favourite. I will definitely order again."</p>
       <div class="reviewer">
         <div class="reviewer-avatar">
           <img src="img/rice_beans.jpg" alt="Adaeze O.">
         </div>
         <div class="reviewer-info">
           <div class="name">Adaeze O.</div>
-          <div class="origin">Nigerian, living in Istanbul</div>
+          <div class="origin">Hara Grills customer</div>
         </div>
       </div>
     </div>
     <div class="review-card">
       <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <p class="review-text">"The Egusi Soup is absolutely divine. My Turkish friends tried it and couldn't believe what they'd been missing. Chef is incredibly talented."</p>
+      <p class="review-text">"The Egusi Soup was really good, and the portions were satisfying."</p>
       <div class="reviewer">
         <div class="reviewer-avatar">
           <img src="img/fried_rice.jpg" alt="Emeka T.">
         </div>
         <div class="reviewer-info">
           <div class="name">Emeka T.</div>
-          <div class="origin">Nigerian student, Istanbul</div>
+          <div class="origin">Hara Grills customer</div>
         </div>
       </div>
     </div>
     <div class="review-card">
       <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <p class="review-text">"Ordered the Pepper Soup on a cold Istanbul winter night — it was everything. Fast delivery, huge portions, and packed with flavour. Highly recommend!"</p>
+      <p class="review-text">"The Pepper Soup was full of flavour. Great option when you are craving something spicy."</p>
       <div class="reviewer">
         <div class="reviewer-avatar">
           <img src="img/ofada_rice.jpg" alt="Fatima K.">
         </div>
         <div class="reviewer-info">
           <div class="name">Fatima K.</div>
-          <div class="origin">Istanbul food lover</div>
+          <div class="origin">Marian food lover</div>
         </div>
       </div>
     </div>
@@ -1690,27 +1711,27 @@
   <div class="contact-info">
     <div class="section-label">Get in Touch</div>
     <h2 class="section-title">Order or <em>Enquire</em></h2>
-    <p class="section-body">We're always happy to hear from you. The quickest way to order is via WhatsApp — we respond fast!</p>
+    <p class="section-body">Want to order or ask a question? Send us a WhatsApp message.</p>
     <div class="contact-details">
       <div class="contact-item">
         <div class="contact-icon"><span class="contact-icon-emoji">📍</span></div>
         <div>
           <div class="contact-item-label">Location</div>
-          <div class="contact-item-val">Istanbul, Turkey</div>
+          <div class="contact-item-val">Marian, beside Amber Lounge</div>
         </div>
       </div>
       <div class="contact-item">
         <div class="contact-icon"><span class="contact-icon-emoji">💬</span></div>
         <div>
           <div class="contact-item-label">WhatsApp (Orders)</div>
-          <div class="contact-item-val"><a href="https://wa.me/905397996551">+90 539 799 6551</a></div>
+          <div class="contact-item-val"><a href="https://wa.me/2348167284729">08167284729</a></div>
         </div>
       </div>
       <div class="contact-item">
         <div class="contact-icon"><span class="contact-icon-emoji">📸</span></div>
         <div>
           <div class="contact-item-label">Instagram</div>
-          <div class="contact-item-val"><a href="https://instagram.com/inspectorskitchen" target="_blank" rel="noopener">@inspectorskitchen</a></div>
+          <div class="contact-item-val"><a href="https://instagram.com/hara_grills" target="_blank" rel="noopener">@hara_grills</a></div>
         </div>
       </div>
       <div class="contact-item">
@@ -1729,21 +1750,21 @@
         <div>
           <div class="contact-item-label">Delivery</div>
           <div class="contact-item-val">
-            Available across Istanbul<br>
-            <small style="color:var(--text-muted)">Ask about delivery zones</small>
+            Ask us about delivery in your area<br>
+            <small style="color:var(--text-muted)">Message us to check delivery</small>
           </div>
         </div>
       </div>
     </div>
-    <a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="whatsapp-big">
+    <a href="https://wa.me/2348167284729" target="_blank" rel="noopener" class="whatsapp-big">
       <svg class="wa-icon" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.570-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       Order on WhatsApp
     </a>
   </div>
 
   <div class="reservation-form">
-    <div class="form-title">Send a Message</div>
-    <p class="form-subtitle">For catering enquiries, large orders, or special requests.</p>
+    <div class="form-title">Order or Book a Table</div>
+    <p class="form-subtitle">Fill in the details and continue to WhatsApp to send your request to Hara Grills.</p>
     <div id="contactForm">
       <div class="form-row">
         <div class="form-group">
@@ -1752,7 +1773,7 @@
         </div>
         <div class="form-group">
           <label for="fphone">Phone / WhatsApp</label>
-          <input type="tel" id="fphone" placeholder="+90 ...">
+          <input type="tel" id="fphone" placeholder="0816 728 4729">
         </div>
       </div>
       <div class="form-row">
@@ -1761,9 +1782,10 @@
           <input type="email" id="femail" placeholder="you@email.com">
         </div>
         <div class="form-group">
-          <label for="ftype">Enquiry Type</label>
+          <label for="ftype">What do you need?</label>
           <select id="ftype">
-            <option>Regular Order</option>
+            <option>Food Order</option>
+            <option>Table Booking</option>
             <option>Catering / Event</option>
             <option>Large Batch Order</option>
             <option>General Enquiry</option>
@@ -1776,7 +1798,7 @@
           <textarea id="fmsg" placeholder="Tell us what you'd like to order, special requests, delivery address, etc."></textarea>
         </div>
       </div>
-      <button type="button" class="submit-btn" onclick="submitForm()">Send Message &rarr;</button>
+      <button type="button" class="submit-btn" onclick="submitForm()">Continue to WhatsApp &rarr;</button>
     </div>
   </div>
 </section>
@@ -1787,17 +1809,17 @@
 <div id="map-section">
   <div class="map-container">
     <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d192756.49060279!2d28.748046!3d41.015137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa7040068086b%3A0xe1ccfe98bc01b0d0!2sIstanbul%2C%20Turkey!5e0!3m2!1sen!2str!4v1700000000000"
-      title="Inspector's Kitchen location — Istanbul, Turkey"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d192756.49060279!2d28.748046!3d41.015137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa7040068086b%3A0xe1ccfe98bc01b0d0!2sMarian%2C%20Nigeria!5e0!3m2!1sen!2str!4v1700000000000"
+      title="Hara Grills location — Marian, beside Amber Lounge"
       allowfullscreen
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade">
     </iframe>
     <div class="map-overlay-card">
-      <img src="img/logo.png" alt="Inspector's Kitchen Logo" class="logo-sm">
-      <div class="title">Inspector's Kitchen</div>
-      <div class="addr">Istanbul, Turkey<br>Delivery Available Citywide</div>
-      <a href="https://wa.me/905397996551" target="_blank" rel="noopener">
+      <img src="img/logo.png" alt="Hara Grills Logo" class="logo-sm">
+      <div class="title">Hara Grills</div>
+      <div class="addr">Marian, beside Amber Lounge<br></div>
+      <a href="https://wa.me/2348167284729" target="_blank" rel="noopener">
         Order on WhatsApp &rarr;
       </a>
     </div>
@@ -1811,21 +1833,21 @@
   <div class="footer-grid">
     <div class="footer-brand">
       <div class="footer-logo">
-        <img src="img/logo.png" alt="Inspector's Kitchen">
+        <img src="img/logo.png" alt="Hara Grills">
         <div class="footer-logo-text">
-          <div class="brand">Inspector's Kitchen</div>
-          <div class="sub">African Food &middot; Istanbul</div>
+          <div class="brand">Hara Grills</div>
+          <div class="sub">Restaurant &middot; Marian</div>
         </div>
       </div>
-      <p class="footer-desc">Bringing the bold, comforting flavours of West African home cooking to the heart of Istanbul, Turkey. Freshly made, delivered with love.</p>
+      <p class="footer-desc">Good food, grilled favourites and local dishes. Visit us in Marian, beside Amber Lounge, or message us to order.</p>
       <div class="social-links">
-        <a href="https://instagram.com/inspectorskitchen" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+        <a href="https://instagram.com/hara_grills" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
         </a>
-        <a href="https://wa.me/905397996551" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp">
+        <a href="https://wa.me/2348167284729" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.570-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         </a>
-        <a href="tel:+905397996551" class="social-link" aria-label="Call us">
+        <a href="tel:2348167284729" class="social-link" aria-label="Call us">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02L6.6 10.8z"/></svg>
         </a>
       </div>
@@ -1863,14 +1885,31 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy; 2025 Inspector's Kitchen. All rights reserved. Made with <span class="heart">&#9829;</span> in Istanbul.</p>
+    <p>&copy; 2025 Hara Grills. All rights reserved. Made with <span class="heart">&#9829;</span> for Hara Grills.</p>
     <p>
-      <a href="tel:+905397996551">+90 539 799 6551</a>
+      <a href="tel:2348167284729">08167284729</a>
       &nbsp;&middot;&nbsp;
-      <a href="https://instagram.com/inspectorskitchen" target="_blank" rel="noopener">@inspectorskitchen</a>
+      <a href="https://instagram.com/hara_grills" target="_blank" rel="noopener">@hara_grills</a>
     </p>
   </div>
 </footer>
+
+<div class="cart-backdrop" id="cartBackdrop" onclick="closeCart(event)" aria-hidden="true"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Your order" aria-hidden="true">
+  <div class="cart-head"><div><span class="eyebrow">HARA GRILLS</span><h2>Your Order</h2></div><button type="button" class="cart-close" onclick="closeCart()" aria-label="Close cart">×</button></div>
+  <p class="cart-note">Review your food selections, choose quantities, and enter your delivery or table details before sending everything to WhatsApp.</p>
+  <div id="cartItems" class="cart-items"><p class="cart-empty">Your cart is empty. Add meals from the menu to get started.</p></div>
+  <div class="cart-form">
+    <label for="orderName">Your name *</label><input id="orderName" type="text" placeholder="Name" autocomplete="name">
+    <label for="orderPhone">Phone number *</label><input id="orderPhone" type="tel" placeholder="e.g. 08012345678" autocomplete="tel">
+    <label for="orderType">Order type</label><select id="orderType"><option>Delivery</option><option>Pickup</option><option>Dine-in / Table request</option></select>
+    <label for="orderAddress">Delivery address / table details</label><textarea id="orderAddress" rows="2" placeholder="Enter delivery address or table request (optional)"></textarea>
+    <label for="orderNotes">Extra instructions</label><textarea id="orderNotes" rows="2" placeholder="Spice level, preferred time, etc. (optional)"></textarea>
+  </div>
+  <button type="button" class="cart-checkout" onclick="sendCartToWhatsApp()">Continue to WhatsApp →</button>
+  <p class="cart-disclaimer">Prices are confirmed by Hara Grills on WhatsApp. Your order is not confirmed until the restaurant replies.</p>
+</aside>
+
 
 <script>
   /* ── NAV SCROLL EFFECT ── */
@@ -1942,22 +1981,66 @@
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+
+  /* ── CART + WHATSAPP CHECKOUT ── */
+  const orderCart = new Map();
+  function addMenuItem(button) {
+    const card = button.closest('.menu-card');
+    const name = card?.querySelector('.menu-card-name')?.textContent.trim();
+    if (!name) return;
+    orderCart.set(name, (orderCart.get(name) || 0) + 1);
+    updateCartUI();
+    button.textContent = 'Added ✓';
+    setTimeout(() => { button.textContent = 'Add to Cart'; }, 900);
+  }
+  function updateCartUI() {
+    const count = [...orderCart.values()].reduce((a,b)=>a+b,0);
+    const countEl = document.getElementById('cartCount');
+    if (countEl) countEl.textContent = count;
+    const box = document.getElementById('cartItems');
+    if (!box) return;
+    if (!orderCart.size) { box.innerHTML = '<p class="cart-empty">Your cart is empty. Add meals from the menu to get started.</p>'; return; }
+    box.innerHTML = [...orderCart.entries()].map(([name,qty]) =>
+      `<div class="cart-line"><div><div class="cart-line-name">${escapeHTML(name)}</div><small>Price to be confirmed on WhatsApp</small></div><div class="qty-controls"><button type="button" aria-label="Decrease item" onclick="changeCartQty('${encodeURIComponent(name)}',-1)">−</button><span>${qty}</span><button type="button" aria-label="Increase item" onclick="changeCartQty('${encodeURIComponent(name)}',1)">+</button></div></div>`
+    ).join('');
+  }
+  function escapeHTML(value) { return value.replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
+  function changeCartQty(encodedName, delta) {
+    const name = decodeURIComponent(encodedName), next = (orderCart.get(name) || 0) + delta;
+    if (next <= 0) orderCart.delete(name); else orderCart.set(name, next);
+    updateCartUI();
+  }
+  function openCart() { document.body.classList.add('cart-open'); document.getElementById('cartDrawer').setAttribute('aria-hidden','false'); document.getElementById('cartBackdrop').setAttribute('aria-hidden','false'); }
+  function closeCart(event) {
+    if (event && event.target !== document.getElementById('cartBackdrop')) return;
+    document.body.classList.remove('cart-open');
+    document.getElementById('cartDrawer').setAttribute('aria-hidden','true');
+    document.getElementById('cartBackdrop').setAttribute('aria-hidden','true');
+  }
+  function sendCartToWhatsApp() {
+    if (!orderCart.size) { alert('Please add at least one meal to your cart.'); return; }
+    const name = document.getElementById('orderName').value.trim(), phone = document.getElementById('orderPhone').value.trim();
+    if (!name || !phone) { alert('Please enter your name and phone number.'); return; }
+    const type = document.getElementById('orderType').value, address = document.getElementById('orderAddress').value.trim(), notes = document.getElementById('orderNotes').value.trim();
+    const lines = [...orderCart.entries()].map(([item,qty]) => `• ${item} × ${qty}`).join('\n');
+    const message = `Hello Hara Grills, I would like to place an order.\n\nORDER ITEMS:\n${lines}\n\nCustomer name: ${name}\nPhone: ${phone}\nOrder type: ${type}\n${type === 'Delivery' ? 'Delivery address' : 'Table / pickup details'}: ${address || 'To be confirmed'}\nExtra instructions: ${notes || 'None'}\n\nPlease confirm prices, availability and the next steps.`;
+    window.open('https://wa.me/2348167284729?text=' + encodeURIComponent(message), '_blank', 'noopener');
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCart(); });
+
   /* ── FORM SUBMIT ── */
   function submitForm() {
     const name = document.getElementById('fname').value.trim();
+    const phone = document.getElementById('fphone').value.trim();
+    const email = document.getElementById('femail').value.trim();
+    const type = document.getElementById('ftype').value;
+    const message = document.getElementById('fmsg').value.trim();
     if (!name) {
       document.getElementById('fname').focus();
       return;
     }
-    const toast = document.getElementById('toast');
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 4500);
-    // Reset fields
-    ['fname','fphone','femail','fmsg'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.value = '';
-    });
-    document.getElementById('ftype').selectedIndex = 0;
+    const text = `Hello Hara Grills, I'd like to make a ${type.toLowerCase()}.\nName: ${name}\nPhone: ${phone || 'Not provided'}\nEmail: ${email || 'Not provided'}\nDetails: ${message || 'Please contact me to confirm details.'}`;
+    window.open('https://wa.me/2348167284729?text=' + encodeURIComponent(text), '_blank', 'noopener');
   }
 </script>
 </body>
